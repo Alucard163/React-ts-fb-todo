@@ -1,25 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import React from "react";
+import TodoForm from "./TodoForm";
+import TodoList from "./TodoList";
+import Container from '@material-ui/core/Container';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import "./App.scss";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="App">
+        <Container className="container" maxWidth="sm">
+          <Card>
+            <CardContent>
+              <h3>Simple TODO App</h3>
+              <TodoForm />
+              <TodoList />
+            </CardContent>
+          </Card>
+        </Container>
+      </div>
   );
 }
 
