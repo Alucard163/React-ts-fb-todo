@@ -1,13 +1,18 @@
 import React from 'react';
 import Switch from '@material-ui/core/Switch';
 import IconButton from '@material-ui/core/IconButton';
-// import DeleteIcon from '@material-ui/icons/Delete';
+import DeleteIcon from '@material-ui/icons/Delete';
 import "./Todo.scss";
-import {todosRef} from "./firebase";
-function Todo(props: any) {
+import {todosRef} from "../../firebase/firebase";
+
+const Todo = (props: any) => {
+    const classes = [''];
     const { todo } = props;
     const updateTodo = () => {
         todosRef.child(todo.id).set({...todo,done:!todo.done})
+    }
+    if (todo.done) {
+        classes.push('_completed');
     }
     return (
         <div className="Todo">
@@ -15,9 +20,9 @@ function Todo(props: any) {
                 edge="end" checked={todo.done} onChange={updateTodo}
                 inputProps={{ "aria-labelledby": "switch-list-label-bluetooth" }}
             />
-            <p>{todo.task}</p>
+            <p className={classes.join(' ')}>{todo.task}</p>
             <IconButton aria-label="delete" onClick={e => todosRef.child(todo.id).remove()}>
-                {/*<DeleteIcon fontSize="large" />*/}
+                <DeleteIcon fontSize="large" />
             </IconButton>
         </div>
     );

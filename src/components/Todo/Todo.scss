@@ -6,4 +6,7 @@
     padding: 8px;
     flex-grow: 1;
   }
+  ._completed {
+    text-decoration: line-through;
+  }
 }

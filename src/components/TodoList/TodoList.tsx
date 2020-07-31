@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from "react";
-import Todo from "./Todo";
+import Todo from "../Todo/Todo";
 import Divider from '@material-ui/core/Divider';
-import {todosRef} from "./firebase";
-function TodoList() {
+import {todosRef} from "../../firebase/firebase";
+
+const TodoList:React.FC = () => {
     const [todos,setTodos]  = useState<any>([]);
     useEffect(() => {
         todosRef.on('value', (snapshot) => {
